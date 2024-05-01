@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Heading, Input, List, ListItem, VStack, HStack, IconButton, useToast } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import { FaPlus, FaTrash } from "react-icons/fa";
 
@@ -44,14 +45,23 @@ const Index = () => {
         <IconButton icon={<FaPlus />} onClick={addTodo} colorScheme="red" aria-label="Add todo" />
       </HStack>
       <List spacing={3} my={5} w="100%">
-        {todos.map((todo, index) => (
-          <ListItem key={index} p={2} bg="gray.100" borderRadius="md">
-            <HStack justify="space-between">
-              <Box>{todo}</Box>
-              <IconButton icon={<FaTrash />} onClick={() => deleteTodo(index)} colorScheme="red" aria-label="Delete todo" />
-            </HStack>
-          </ListItem>
-        ))}
+        {todos.map((todo, index) => {
+          const listItemVariants = {
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: { opacity: 1, scale: 1 },
+            exit: { opacity: 0, scale: 0.95 },
+          };
+          return (
+            <motion.div key={index} initial="hidden" animate="visible" exit="exit" variants={listItemVariants} layout>
+              <ListItem p={2} bg="gray.100" borderRadius="md">
+                <HStack justify="space-between">
+                  <Box>{todo}</Box>
+                  <IconButton icon={<FaTrash />} onClick={() => deleteTodo(index)} colorScheme="red" aria-label="Delete todo" />
+                </HStack>
+              </ListItem>
+            </motion.div>
+          );
+        })}
       </List>
       <Footer />
     </VStack>
