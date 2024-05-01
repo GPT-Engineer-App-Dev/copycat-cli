@@ -11,21 +11,12 @@ const colors = {
   },
 };
 
-const theme = extendTheme({
-  colors,
-  styles: {
-    global: {
-      body: {
-        bg: "gray.100",
-      },
-    },
-  },
-});
+const theme = extendTheme({ colors });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
