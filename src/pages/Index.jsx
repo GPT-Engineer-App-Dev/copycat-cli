@@ -37,7 +37,7 @@ const Index = () => {
   };
 
   return (
-    <VStack p={8}>
+    <VStack p={8} bg="gray.100" style={{ backgroundSize: "100px 100px", backgroundImage: "repeating-linear-gradient(45deg, #f5f5f5 25%, transparent 25%, transparent 75%, #f5f5f5 75%, #f5f5f5), repeating-linear-gradient(45deg, #f5f5f5 25%, #eaeaea 25%, #eaeaea 75%, #f5f5f5 75%, #f5f5f5)" }}>
       <Heading mb="8">My Application</Heading>
       <HStack>
         <Input value={inputValue} onChange={handleInputChange} onKeyPress={handleKeyPress} placeholder="Add a new task..." />
